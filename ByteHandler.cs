@@ -10,7 +10,7 @@ namespace KimSangjin
     class ByteHandler
     {
         /// <summary>
-        /// Gif 파일 경로로부터 모든 바이트를 리턴한다.
+        /// 파일 경로로부터 모든 바이트를 리턴한다.
         /// </summary>
         public static byte[] GetWholeBytes(string path)
         {
@@ -27,7 +27,7 @@ namespace KimSangjin
         }
 
         /// <summary>
-        /// Gif 파일 경로로부터 모든 바이트를 리턴한다.
+        /// 로부터 모든 바이트를 리턴한다.
         /// </summary>
         public static byte[] GetWholeBytes(Stream sr)
         {
@@ -42,8 +42,8 @@ namespace KimSangjin
         /// </summary>
         private static void SaveBytes(byte[] bytes, string path)
         {
-            using (Stream sr = new FileStream(path, FileMode.Create))
-            using (BinaryWriter bw = new BinaryWriter(sr))
+            using (Stream sw = new FileStream(path, FileMode.Create))
+            using (BinaryWriter bw = new BinaryWriter(sw))
             {
                 bw.Write(bytes);
             }
