@@ -1,9 +1,13 @@
 //출력1
-public void MyPrint(IEnumerable items)
+public static void MyPrint(IEnumerable items)
 {
     foreach (object o in items)
     {
-        Console.WriteLine(o);
+        foreach (var prop in o.GetType().GetProperties())
+            {
+                Console.WriteLine("{0}={1}", prop.Name, prop.GetValue(o, null));
+            }
+        Console.WriteLine();
     }
 }
 
