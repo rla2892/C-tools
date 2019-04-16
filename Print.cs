@@ -1,5 +1,5 @@
 //출력1
-public void WriteToConsole(IEnumerable items)
+public void MyPrint(IEnumerable items)
 {
     foreach (object o in items)
     {
