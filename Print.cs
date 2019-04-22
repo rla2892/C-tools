@@ -14,3 +14,13 @@ public static void MyPrint(IEnumerable items)
 //출력2 간단
 var list = new List<int>(Enumerable.Range(0, 50));
 list.ForEach(Console.WriteLine);
+
+
+//출력3 string 배열 출력
+public static void StringArrayPrint(string[] strs)
+{
+    foreach(string str in strs)
+    {
+        Console.WriteLine(str)
+    }
+}
