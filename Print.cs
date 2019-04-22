@@ -21,6 +21,6 @@ public static void StringArrayPrint(string[] strs)
 {
     foreach(string str in strs)
     {
-        Console.WriteLine(str)
+        Console.WriteLine(str);
     }
 }
