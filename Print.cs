@@ -24,3 +24,12 @@ public static void StringArrayPrint(string[] strs)
         Console.WriteLine(str);
     }
 }
+
+//출력4 List 
+public static void ListPrint<T>(List<T> list)
+{
+    foreach(T item in list)
+    {
+        Console.WriteLine(item);
+    }
+}
