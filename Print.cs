@@ -5,7 +5,7 @@ public static void MyPrint(IEnumerable items)
     {
         foreach (var prop in o.GetType().GetProperties())
             {
-                Console.WriteLine("{0}={1}", prop.Name, prop.GetValue(o, null));
+                Console.WriteLine("{0} = {1}", prop.Name, prop.GetValue(o, null));
             }
         Console.WriteLine();
     }
