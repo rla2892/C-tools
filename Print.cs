@@ -33,3 +33,9 @@ public static void ListPrint<T>(List<T> list)
         Console.WriteLine(item);
     }
 }
+
+//바이트 배열 출력
+public static void PrintBytes(byte[] bytes)
+{
+    Console.WriteLine(Encoding.Default.GetString(bytes));
+}
