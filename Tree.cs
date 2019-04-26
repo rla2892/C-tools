@@ -39,7 +39,7 @@ namespace Tree
             return dic;
         }
         
-        public static FolderEntity ReturnFolder(FolderEntity root, string findId)
+        public static FolderEntity ReturnFolder(FolderEntity root, string findId, bool isFirst = true)
         {
             Console.WriteLine(root.FolderId);
             if (root.FolderId == findId)
@@ -48,27 +48,34 @@ namespace Tree
             }
             else
             {
-                Console.WriteLine(root.SubFolders.Count);
+                //Console.WriteLine(root.SubFolders.Count);
                 if (root.SubFolders.Count < 1) throw new LeafException();
                 foreach (FolderEntity sub in root.SubFolders.Values)
                 {
                     try
                     {
-                        return ReturnFolder(sub, findId);
+                        return ReturnFolder(sub, findId, false);
                     }
                     catch(LeafException e)
                     {
-                        //Console.WriteLine(e.StackTrace);
+                        Console.WriteLine(e);
                         continue;
                     }
                     catch(FinishLoopException e)
                     {
-                        //Console.WriteLine(e.StackTrace);
+                        Console.WriteLine(e);
                         continue;
                     }
                 }
-                throw new FinishLoopException();
-                //throw new NotFoundFolderException();
+                
+                if(isFirst)
+                {
+                    throw new NotFoundFolderException();
+                }
+                else
+                {
+                    throw new FinishLoopException();
+                }
             }
         }
     }
