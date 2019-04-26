@@ -38,5 +38,38 @@ namespace Tree
         {
             return dic;
         }
+        
+        public static FolderEntity ReturnFolder(FolderEntity root, string findId)
+        {
+            Console.WriteLine(root.FolderId);
+            if (root.FolderId == findId)
+            {
+                return root;
+            }
+            else
+            {
+                Console.WriteLine(root.SubFolders.Count);
+                if (root.SubFolders.Count < 1) throw new LeafException();
+                foreach (FolderEntity sub in root.SubFolders.Values)
+                {
+                    try
+                    {
+                        return ReturnFolder(sub, findId);
+                    }
+                    catch(LeafException e)
+                    {
+                        //Console.WriteLine(e.StackTrace);
+                        continue;
+                    }
+                    catch(FinishLoopException e)
+                    {
+                        //Console.WriteLine(e.StackTrace);
+                        continue;
+                    }
+                }
+                throw new FinishLoopException();
+                //throw new NotFoundFolderException();
+            }
+        }
     }
 }
