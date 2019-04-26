@@ -41,14 +41,12 @@ namespace Tree
         
         public static FolderEntity ReturnFolder(FolderEntity root, string findId, bool isFirst = true)
         {
-            Console.WriteLine(root.FolderId);
             if (root.FolderId == findId)
             {
                 return root;
             }
             else
             {
-                //Console.WriteLine(root.SubFolders.Count);
                 if (root.SubFolders.Count < 1) throw new LeafException();
                 foreach (FolderEntity sub in root.SubFolders.Values)
                 {
@@ -56,19 +54,17 @@ namespace Tree
                     {
                         return ReturnFolder(sub, findId, false);
                     }
-                    catch(LeafException e)
+                    catch (LeafException e)
                     {
-                        Console.WriteLine(e);
                         continue;
                     }
-                    catch(FinishLoopException e)
+                    catch (FinishLoopException e)
                     {
-                        Console.WriteLine(e);
                         continue;
                     }
                 }
-                
-                if(isFirst)
+
+                if (isFirst)
                 {
                     throw new NotFoundFolderException();
                 }
